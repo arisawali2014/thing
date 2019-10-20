@@ -207,7 +207,7 @@ function get_enc_key($param_1) {
     $v_5 = ceil(strlen($param_1)/3)*3;
     $v_6 = str_pad($param_1,$v_5,'0',STR_PAD_LEFT);
 
-    for ($i = 0; $i < (len($v_6)/3); $i++) {
+    for ($i = 0; $i < (strlen($v_6)/3); $i++) {
         $v_1 .= chr(substr(strval($v_6),$i*3,3));
     }
     return $v_1;
@@ -222,7 +222,8 @@ if (!empty($argv[1])) {
         $x_res = trim($x_tea->encrypt(str_replace("'", "", $r[0][4])));
 
         preg_match('/"([^"]+)"\)\)\)/', $x_res, $a);
-        echo str_replace(';', ";\n", gzinflate(base64_decode(str_replace(['"',')'], '', $a[0]))));
+        //echo str_replace(';', ";\n", gzinflate(base64_decode(str_replace(['"',')'], '', $a[0]))));
+        echo str_replace(';',';\n', gzinflate(base64_decode(str_replace(['"',')'],'',$a[0]))))
     }
 } else {
     echo "Usage: zxtea.php <file>\n";
