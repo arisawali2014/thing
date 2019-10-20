@@ -222,10 +222,7 @@ if (!empty($argv[1])) {
         $x_res = trim($x_tea->encrypt(str_replace("'", "", $r[0][4])));
 
         preg_match('/"([^"]+)"\)\)\)/', $x_res, $a);
-        //echo str_replace(';', ";\n", gzinflate(base64_decode(str_replace(['"',')'], '', $a[0]))));
-        //echo str_replace(';',';\n', base64_decode(str_replace(['"',')'],'',$a[0])));
-        //echo str_replace(';', ";\n", gzinflate(stripslashes(base64_decode(str_replace(['"',')'],'',$a[0])))));
-        echo $a[0];
+        echo str_replace(';', ";\n", gzinflate(base64_decode(str_replace(['"',')'], '', $a[0]))));
     }
 } else {
     echo "Usage: zxtea.php <file>\n";
